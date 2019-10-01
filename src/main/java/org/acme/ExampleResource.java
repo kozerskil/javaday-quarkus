@@ -7,9 +7,9 @@ import javax.inject.Inject;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
-import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
-import javax.ws.rs.core.Response;
+
+import org.acme.prime.DataService;
 
 @Path("/hello")
 public class ExampleResource {
@@ -25,12 +25,5 @@ public class ExampleResource {
             "Greetings from Quarkus!",
             LocalDateTime.now()
         );
-    }
-
-    @GET
-    @Path("foo")
-    @Produces(MediaType.TEXT_PLAIN)
-    public Response foo(@QueryParam("msg") String msg) {
-        return Response.ok(service.bar(msg)).build();
     }
 }
