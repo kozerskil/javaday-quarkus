@@ -20,11 +20,11 @@ public class ExampleResource {
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     public Greeting hello() {
-        return Greeting.builder()
-            .id(UUID.randomUUID().toString())
-            .content("Greetings from Quarkus!")
-            .time(LocalDateTime.now())
-            .build();
+        return new Greeting(
+            UUID.randomUUID().toString(),
+            "Greetings from Quarkus!",
+            LocalDateTime.now()
+        );
     }
 
     @GET
