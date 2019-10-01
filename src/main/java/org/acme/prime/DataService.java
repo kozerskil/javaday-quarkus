@@ -1,14 +1,14 @@
 package org.acme.prime;
 
 import javax.enterprise.context.RequestScoped;
-import javax.ws.rs.NotFoundException;
+import javax.ws.rs.BadRequestException;
 
 @RequestScoped
 public class DataService {
 
     public boolean isPrime(int number) {
         if (number < 0) {
-            throw new NotFoundException();
+            throw new BadRequestException();
         }
         if (number < 2) {
             return false;
