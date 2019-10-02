@@ -17,6 +17,7 @@ public class PrimeResource {
     @Produces(MediaType.APPLICATION_JSON)
     public PrimeRepresentation prime(@QueryParam("number") int number) {
         boolean prime = service.isPrime(number);
+        System.out.printf("isPrime(%d)==%b%n", number, prime);
         return new PrimeRepresentation(number, prime);
     }
 }

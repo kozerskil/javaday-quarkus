@@ -13,6 +13,6 @@ mvn quarkus:add-extension -Dextensions="openapi"
 mvn clean 
 mvn package
 docker build -t javaday-quarkus .
-docker run --rm -d -p 8082:8082 --name quarkus javaday-quarkus
+docker run --rm -d -p 8082:8082 -m 256m --network javaday-net --name quarkus javaday-quarkus
 docker stop quarkus
 ```
