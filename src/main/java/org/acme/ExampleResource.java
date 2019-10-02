@@ -1,7 +1,7 @@
 package org.acme;
 
-import java.net.MalformedURLException;
-import java.net.URL;
+import java.time.LocalDateTime;
+import java.util.UUID;
 
 import javax.inject.Inject;
 import javax.ws.rs.GET;
@@ -10,8 +10,6 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
 import org.acme.prime.DataService;
-import org.acme.prime.SpringService;
-import org.eclipse.microprofile.rest.client.RestClientBuilder;
 
 @Path("/hello")
 public class ExampleResource {
@@ -21,11 +19,11 @@ public class ExampleResource {
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    public Greeting hello() throws MalformedURLException {
-        SpringService service = RestClientBuilder.newBuilder()
-            .baseUrl(new URL("http://localhost:8081"))
-            .build(SpringService.class);
-        Greeting greetings = service.getGreetings();
-        return greetings;
+    public Greeting hello() {
+        return new Greeting(
+            UUID.randomUUID().toString(),
+            "Greetings from Quarkus!",
+            LocalDateTime.now()
+        );
     }
 }
